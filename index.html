@@ -17,14 +17,14 @@
     <main
       class="min-h-screen bg-[#010313] bg-[url(./images/background.png)] bg-no-repeat bg-center"
     >
-      <section class="home min-h-screen text-white flex justify-center items-center hidden ">
+      <section id="home-screen" class=" min-h-screen text-white flex justify-center items-center  ">
         <div class="flex flex-col  justify-center items-center gap-7">
           <h1 class="text-9xl font-anton uppercase font-medium ">Alphabet Clash</h1>
           <p>Unleash Your Keyboard Kung Fu : Press “Enter” to Play</p>
-          <button class="btn bg-white text-black">Play Now</button></div>
+          <button onclick="play()" class="btn bg-white text-black">Play Now</button></div>
       </section>
-      <section class="play-ground">
-        <div class="flex flex-col items-center gap-20 pt-20 hidden">
+      <section id="play-ground"class="hidden" >
+        <div class="flex flex-col items-center gap-20 pt-20">
           <!-- screen -->
           <div class="artboard artboard-horizontal phone-6 border-[20px] rounded-2xl border-[#010313CC] bg-[#FFFFFFB2]">
             <div class="flex justify-center">
@@ -86,7 +86,8 @@
           </div>
         </div>
       </section>
-      <section class="score flex justify-center items-center min-h-screen ">
+      <!-- Final score start -->
+      <section class="score flex justify-center items-center min-h-screen hidden">
         <div class="text-white text-center space-y-8 bg-[#ffffff5a] p-9 rounded-lg">
           <h1 class="text-8xl">
             <span class="font-extrabold">Score:</span>
@@ -97,5 +98,7 @@
         </div>
       </section>
     </main>
+    <script src="./scripts/alpha.js"></script>
+    <script src="./scripts/utility.js"></script>
   </body>
 </html>
