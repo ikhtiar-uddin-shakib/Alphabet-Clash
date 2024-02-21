@@ -9,26 +9,79 @@
 
 function handleKeyboardPress(event){
     const playerPressed = event.key;
-    console.log("Player Pressed",playerPressed);
+    // console.log("Player Pressed",playerPressed);
+    
+    //stop the game if pressed 'esc'
+
+    if(playerPressed === 'Escape'){
+        gameover();
+    }
     
     //get the expected to press
     const currentAlphabetElement = document.getElementById('current-alphabet');
     const currentAlphabet = currentAlphabetElement.innerText;
     const expectedAlphabet = currentAlphabet.toLowerCase();
-    console.log(playerPressed, expectedAlphabet)
+    // console.log(playerPressed, expectedAlphabet)
     
 
     //check match or not 
     if (playerPressed == expectedAlphabet){
         console.log('you get a point');
-        console.log('You have pressed correctly', expectedAlphabet);
+
+
+        //using function
+        const currentScore = getTextElementValueById('current-score');
+        const updateScore = currentScore + 1;
+        setTextElementValueById('current-score', updateScore);
+
+
+
+        //---------------------------------
+        //update score
+        // 1.get the current score
+        // const currentScoreElement = document.getElementById('current-score');
+        // const currentScoreText = currentScoreElement.innerText;
+        // console.log(currentScoreText);
+        // const currentScore = parseInt(currentScoreText);
+        // console.log(currentScore);
+
+        // // 2.increase score by 1
+        // const newScore = currentScore + 1;
+
+
+        // // 3.show the update score
+        // currentScoreElement.innerText = newScore;
+        
+        //start a new round
         removeBackgroundColorById(expectedAlphabet);
         continueGame();
     }
     else{
         console.log('You missed, you lost a life');
+
+        //using function
+        const currentLife = getTextElementValueById('current-life');
+        const updateLife = currentLife - 1;
+        setTextElementValueById('current-life', updateLife);
+        if(updateLife === 0){
+            gameover();}
+
+        //---------------------------------------
+        // get the current number
+        // const currentLifeElement = document.getElementById('current-life');
+        // const currentLifeText = currentLifeElement.innerText;
+        // const currentLife = parseInt(currentLifeText);
+        // // reduce the life count
+        // const newLife = currentLife - 1;
+        // // display the updated life count
+        // currentLifeElement.innerText = newLife; 
+
+        
+        }
+
+
     }
-}
+
 //capture keyboard key press
 document.addEventListener('keyup', handleKeyboardPress)
 
@@ -47,7 +100,26 @@ function continueGame(){
 }
 
 function play(){
+    //hide everything show only playground
     hideElementById('home-screen');
+    hideElementById('final-score');
     showElementById('play-ground');
+
+    //reset score and life
+    setTextElementValueById('current-life', 5);
+    setTextElementValueById('current-score', 0);
     continueGame();
+}
+
+function gameover(){
+    hideElementById('play-ground');
+    showElementById('final-score');
+
+    // update final score
+    const lastScore = getTextElementValueById('current-score');
+    setTextElementValueById('game-score', lastScore); 
+
+    //clear the last selected alphabet
+    const currentAlphabet = getElementTextbyId('current-alphabet');
+    removeBackgroundColorById(currentAlphabet);
 }
