@@ -37,7 +37,7 @@ function handleKeyboardPress(event) {
   if (playerPressed == expectedAlphabet) {
     console.log("you get a point");
 
-    audio.src = "../audio/success.mp3";
+    audio.src = "./audio/success.mp3";
     audio.play();
 
     //using function
@@ -66,7 +66,7 @@ function handleKeyboardPress(event) {
   } else {
     console.log("You missed, you lost a life");
 
-    audio.src = "../audio/wrong.mp3";
+    audio.src = "./audio/wrong.mp3";
     audio.play();
 
     //using function
@@ -140,7 +140,7 @@ function gameover() {
   isGamePlayOn = false;
 
   artBoard.style.background = "linear-gradient(#FFFFFFB2 100% ,red)";
-  audio.src = "../audio/gameover.mp3";
+  audio.src = "./audio/gameover.mp3";
   audio.play();
 }
 function modalOpen(event) {
